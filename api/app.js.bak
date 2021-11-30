@@ -5,15 +5,13 @@ var logger = require('morgan');
 
 var asiakasRouter = require('./routes/asiakas');
 
-var app = express();
-
 const helmet = require('helmet');
 const cors = require('cors');
 
 app.use(helmet());
 app.use(cors());
 
-
+var app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
