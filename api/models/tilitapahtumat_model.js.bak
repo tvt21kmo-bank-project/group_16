@@ -10,7 +10,7 @@ const tilitapahtumat = {
   add: function(tilitapahtumat, callback) {
     return db.query(
       'insert into tilitapahtumat (idTapahtuma, aika, tapahtuma, summa, tilinumero) values(?,now(),?,?,?)',
-      [tilitapahtumat.idTapahtuma, tilitapahtumat.aika, tilitapahtumat.tapahtuma, tilitapahtumat.summa, tilitapahtumat.tilinumero],
+      [tilitapahtumat.idTapahtuma, tilitapahtumat.tapahtuma, tilitapahtumat.summa, tilitapahtumat.tilinumero],
       callback
     );
   },
