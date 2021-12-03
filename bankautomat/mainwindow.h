@@ -19,12 +19,15 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    QString currentAccount;
+
 
 private slots:
     //void on_btnGetAsiakas_clicked();
     //void getAsiakasSlot (QNetworkReply *reply);
     void loginSlot (QNetworkReply *reply);
     void on_btnLogin_clicked();
+    void cardInfo (QNetworkReply *reply);
 
 private:
     Ui::MainWindow *ui;
@@ -32,6 +35,7 @@ private:
     QNetworkReply *reply;
     QNetworkAccessManager *postManager;
     QByteArray response_data;
+    QString currentCardnumber;
 };
 #endif // MAINWINDOW_H
 
