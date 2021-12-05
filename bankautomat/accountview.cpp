@@ -41,3 +41,40 @@ void accountview::getBalanceSlot(QNetworkReply *reply)
     reply->deleteLater();
     manager->deleteLater();
 }
+
+
+void accountview::on_btnLogout_clicked()
+{
+    close();
+    qDebug()<<"Ulos kirjautuminen onnistui";
+}
+
+void accountview::getInfoSlot(QNetworkReply *reply)
+{
+    QByteArray response_data=reply->readAll();
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    QJsonArray json_array = json_doc.array();
+    //QString balance;
+    qDebug()<<response_data;
+    foreach (const QJsonValue &value, json_array)
+    {
+        QJsonObject json_obj = value.toObject();
+        ui->labelWelcome->setText("Tervetuloa "+json_obj["etunimi"].toString()+" "+json_obj["sukunimi"].toString());
+
+    }
+    reply->deleteLater();
+    manager->deleteLater();
+}
+
+void accountview::getInfo(QString cardnumber)
+{
+    qDebug()<<currentAccount;
+    QString site_url="http://localhost:3000/asiakas/getByCardNumber/"+cardnumber;
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    manager = new QNetworkAccessManager(this);
+    connect(manager, SIGNAL(finished (QNetworkReply*)),
+    this, SLOT(getInfoSlot(QNetworkReply*)));
+    reply = manager->get(request);
+}
+

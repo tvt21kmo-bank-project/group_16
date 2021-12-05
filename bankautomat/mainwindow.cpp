@@ -30,7 +30,7 @@ void MainWindow::loginSlot (QNetworkReply *reply)
         manager = new QNetworkAccessManager(this);
         connect(manager, SIGNAL(finished (QNetworkReply*)),
         this, SLOT(cardInfo(QNetworkReply*)));
-        reply = manager->get(request);
+        manager->get(request);
     }
     else
     {
@@ -49,7 +49,6 @@ void MainWindow::cardInfo (QNetworkReply *reply)
 
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
-    //QString cardnumber;
     foreach (const QJsonValue &value, json_array)
     {
         QJsonObject json_obj = value.toObject();
@@ -64,6 +63,7 @@ void MainWindow::cardInfo (QNetworkReply *reply)
         accountview *av = new accountview;
         av->currentAccount=currentAccount;
         av->show();
+        av->getInfo(currentCardnumber);
         qDebug()<<"Kirjautuminen onnistui";
     }
 }

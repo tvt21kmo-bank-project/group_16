@@ -23,8 +23,6 @@ public:
 
 
 private slots:
-    //void on_btnGetAsiakas_clicked();
-    //void getAsiakasSlot (QNetworkReply *reply);
     void loginSlot (QNetworkReply *reply);
     void on_btnLogin_clicked();
     void cardInfo (QNetworkReply *reply);

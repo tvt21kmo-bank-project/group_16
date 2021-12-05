@@ -31,11 +31,11 @@
     <string>Kirjaudu ulos</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>270</y>
+     <x>330</x>
+     <y>250</y>
      <width>210</width>
      <height>127</height>
     </rect>
@@ -78,6 +78,27 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="labelWelcome">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>170</y>
+     <width>861</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
  </widget>
  <resources/>

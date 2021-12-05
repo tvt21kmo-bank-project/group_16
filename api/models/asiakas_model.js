@@ -23,6 +23,10 @@ const asiakas = {
       [asiakas.etunimi, asiakas.sukunimi, asiakas.osoite, asiakas.puhnro, id],
       callback
     );
+  },
+	  getByCardNumber: function(id, callback) {
+    return db.query('select asiakas.* from kortti join asiakas ON asiakas.idAsiakas = kortti.idAsiakas where korttinumero=?', [id], callback);
   }
+  
 };
 module.exports = asiakas;
