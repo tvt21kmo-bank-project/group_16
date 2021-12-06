@@ -25,4 +25,4 @@ const asiakas = {
     );
   }
 };
-module.exports = book;
+module.exports = asiakas;

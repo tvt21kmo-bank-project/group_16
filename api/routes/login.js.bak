@@ -7,7 +7,7 @@ router.post('/',
     if(request.body.korttinumero && request.body.pin){
       const korttinumero = request.body.korttinumero;
       const pin = request.body.pin;
-        login.checkPassword(korttinumero, function(dbError, dbResult) {
+        login.checkPin(korttinumero, function(dbError, dbResult) {
           if(dbError){
             response.json(dbError);
           }
@@ -21,14 +21,16 @@ router.post('/',
 					}
 				
 					else {
-					console.log("Korttinumero tai pin väärin");
-					response.send(false);
+					console.log("Pin väärin");
+					response.json({result:false,message:"Väärä PIN!"});	
+					//response.send(false);
 					}
 				
             }
             else{
               console.log("Korttia ei ole olemassa");
-              response.send(false);
+			  response.json({result:false,message:"Korttinumeroa ei ole olemassa!"});
+              //response.send(false);
             }
           }
           }

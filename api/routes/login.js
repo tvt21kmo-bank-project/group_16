@@ -21,14 +21,16 @@ router.post('/',
 					}
 				
 					else {
-					console.log("Korttinumero tai pin väärin");
-					response.send(false);
+					console.log("Pin väärin");
+					response.json({result:false,message:"Väärä PIN!"});	
+					//response.send(false);
 					}
 				
             }
             else{
               console.log("Korttia ei ole olemassa");
-              response.send(false);
+			  response.json({result:false,message:"Korttinumeroa ei ole olemassa!"});
+              //response.send(false);
             }
           }
           }
@@ -36,7 +38,8 @@ router.post('/',
       }
     else{
       console.log("Korttinumero tai pin puuttuu");
-      response.send(false);
+	  response.json({result:false,message:"Korttinumero tai pin puuttuu!"});
+      //response.send(false);
     }
   }
 );
