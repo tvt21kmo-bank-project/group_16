@@ -22,7 +22,7 @@ router.post('/',
 								console.log(dbError);
 							}
 									else {
-									console.log("Toimii");
+									console.log("Nosto tehty");
 									response.json(true);
 									}
 					}
@@ -31,18 +31,19 @@ router.post('/',
 				else
 				{
 				response.json({result:false,message:"Saldo ei riitä"});	
+				console.log("Saldo ei riitä");
 				}
 				}
 				else
 				{
-					response.json(false);
+					response.json({result:false,message:"Tilinumeroa ei ole olemassa"});
 					console.log("Tilinumeroa ei ole olemassa");
 				}
 			}
 			);
 		}
 		else {
-			response.json(false);
+			response.json({result:false,message:"Määrä puuttuu"});
 			console.log("Tilinumero tai määrä puuttuu");
 		}
 	}
